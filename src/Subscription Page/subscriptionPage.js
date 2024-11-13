@@ -1,7 +1,7 @@
 import SubscriptionCard from '../Subscription Card/subscriptionCard';
 import './subscriptionPage.css';
 
-function SubscriptionPage ({ subs, getDetails, switchSorting }) {
+function SubscriptionPage ({ subs, getDetails, switchSorting, updateSubscription }) {
     const subscriptionCards = subs.map(sub => {
         return (
             <SubscriptionCard
@@ -13,6 +13,7 @@ function SubscriptionPage ({ subs, getDetails, switchSorting }) {
                 frequency={sub.attributes.frequency}
                 status={sub.attributes.status}
                 getDetails={getDetails}
+                updateSubscription={updateSubscription}
             />
         )
     })

@@ -19,7 +19,12 @@ export default function App() {
 
   function getSubscriptions() {
     fetch('http://localhost:3000/api/v1/subscriptions')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.status); 
+      }
+      return response.json()
+    })
     .then(data => {
       const subDatawithIcons = data.data.map(sub => ({
         ...sub,
@@ -36,12 +41,54 @@ export default function App() {
 
   function getDetails(event, id) {
     fetch(`http://localhost:3000/api/v1/subscriptions/${id}`)
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.status); 
+      }
+      return response.json()
+    })
     .then(data => navigate(`/subscription/${id}`, { state: { subDetails: data.data}}))
     .catch(error => {
       console.log(error)
       setError('Oops! Something went wrong! Please try again in a couple minutes.')
     })
+  }
+
+  function updateSubscription(id, status) {
+    fetch(`http://localhost:3000/api/v1/subscriptions/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({'status': status}),
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.status); 
+      }
+      return response.json()
+    })
+    .then(data => updateSubs(data.data))
+    .catch(error => {
+      console.log(error)
+      setError('Opps! Something went wrong! Please try again in a couple minutes.')
+    })
+  }
+
+  function updateSubs(detailedSub) {
+    console.log(detailedSub.attributes.status);
+    console.log(detailedSub.id)
+    const updatedSubs = subs.map(sub => 
+      Number(sub.id) === detailedSub.id 
+      ? { 
+        ...sub, 
+          attributes: {
+            ...sub.attributes,
+              status: detailedSub.attributes.status
+          } 
+        }
+        : sub
+    )
+    console.log(subs)
+    setSubs(updatedSubs)
   }
 
   function sortSubs(subData, sort='high') {
@@ -65,17 +112,26 @@ export default function App() {
 <main className='App'>
 <Routes>
         <Route path='/' element={<>
+              <header>
+              <img src={tea} alt="Home" onClick={()=>{navigate('/')}}/>
               <h1>Tea Time</h1>
-              <SubscriptionPage subs={subs} getDetails={getDetails} switchSorting={switchSorting} />
+              <img src={tea} alt="Home" onClick={()=>{navigate('/')}}/>
+              </header>
+              <SubscriptionPage subs={subs} getDetails={getDetails} switchSorting={switchSorting} updateSubscription={updateSubscription}/>
             </>
           }/>
         <Route path='/subscription/:id' element={<>
+          <header>
+            <img src={tea} alt="Home" onClick={()=>{navigate('/')}}/>
             <h1>Tea Time Details</h1>
+            <img src={tea} alt="Home" onClick={()=>{navigate('/')}}/>
+          </header>
             <SubscriptionDetails />
           </>
         }/>
         <Route path='*' element={<>
             <h1>Something went wrong</h1>
+            <img src={tea} alt="Home" onClick={()=>{navigate('/')}}/>
             {error && <h2>{error}</h2>}
           </>
         }/>

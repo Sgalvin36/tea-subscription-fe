@@ -1,6 +1,6 @@
 import './customerCard.css';
 
-function CustomerCard({ id, key, firstName, lastName, address, cityState, zipCode, email, status}) {
+function CustomerCard({ id, firstName, lastName, address, cityState, zipCode, email, status}) {
     return (
         <div className={`customer-#${id}-${status}`}>
             <h2>{firstName} {lastName}</h2>
