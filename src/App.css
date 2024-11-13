@@ -38,6 +38,7 @@
 }
 body {
   font-family: 'Merriweather', serif;
+  background-color: hsl(190, 50%, 56%);
 }
 
 h1 {
