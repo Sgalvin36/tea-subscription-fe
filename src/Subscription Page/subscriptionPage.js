@@ -23,8 +23,10 @@ function SubscriptionPage ({ subs, getDetails, switchSorting, updateSubscription
             <select name="sortSubs" id="sortSubs" onChange={switchSorting}>
                     <option value="high" >High-to-Low Price</option>
                     <option value="low" >Low-to-High Price</option>
-                </select>
-            {subscriptionCards}
+            </select>
+            <section className='sub-cards'>
+                {subscriptionCards}
+            </section>
         </div>
     )
 }

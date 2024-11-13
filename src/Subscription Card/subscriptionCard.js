@@ -28,7 +28,7 @@ function SubscriptionCard ({ id, icon, title, price, frequency, status, getDetai
                 <img src={icon} alt="subscription icon" className="subscription-icon" />
                 <div className='subscription'>
                     <h2>{title}</h2>
-                    <h3>{price}</h3>
+                    <h3>${price}</h3>
                     <h3>{frequency}</h3>
                     <h3 className={status}>{status}</h3>
                     <button onClick={(event) => handleClick(event, status === 'canceled' ? 'renew' : 'cancel')}>

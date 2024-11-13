@@ -2,7 +2,7 @@ import './customerCard.css';
 
 function CustomerCard({ id, firstName, lastName, address, cityState, zipCode, email, status}) {
     return (
-        <div className={`customer-#${id}-${status}`}>
+        <div className={`customer ${status}`}>
             <h2>{firstName} {lastName}</h2>
             <h3>{email}</h3>
             <h3>{address}</h3>

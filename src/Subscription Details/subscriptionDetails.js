@@ -38,16 +38,18 @@ function SubscriptionDetails () {
 
     return (
         <section>
-            <h2>{subDetails.attributes.title}</h2>
-            <h3>{subDetails.attributes.price}</h3>
-            <h4>{subDetails.attributes.frequency}</h4>
-            <h4>{subDetails.attributes.status}</h4>
-            <section className='customers'>
+            <section className='details titleCardInfo'>
+                <h2>{subDetails.attributes.title}</h2>
+                <h3>{subDetails.attributes.price}</h3>
+                <h4>{subDetails.attributes.frequency}</h4>
+                <h4>{subDetails.attributes.status}</h4>
+            </section>
+            <section className="details teas">
+                {subDetails.attributes.teas && renderTeaCards(subDetails.attributes.teas)}
+            </section>
+            <section className='details customers'>
                 {subDetails.attributes.active_customers && renderCustomerCards(subDetails.attributes.active_customers, 'active')}
                 {subDetails.attributes.inactive_customers && renderCustomerCards(subDetails.attributes.inactive_customers, 'inactive')}
-            </section>
-            <section className="teas">
-                {subDetails.attributes.teas && renderTeaCards(subDetails.attributes.teas)}
             </section>
         </section>
     )
