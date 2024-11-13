@@ -25,7 +25,8 @@ export default function App() {
         ...sub,
         icon: icons[Math.floor(Math.random() * icons.length)]
       }));
-      setSubs(subDatawithIcons);
+      
+      sortSubs(subDatawithIcons);
     })
     .catch(error => {
       console.log(error)
@@ -34,8 +35,6 @@ export default function App() {
   }
 
   function getDetails(event, id) {
-    console.log('event', event)
-    console.log('id',id)
     fetch(`http://localhost:3000/api/v1/subscriptions/${id}`)
     .then(response => response.json())
     .then(data => navigate(`/subscription/${id}`, { state: { subDetails: data.data}}))
@@ -45,12 +44,29 @@ export default function App() {
     })
   }
 
+  function sortSubs(subData, sort='high') {
+    const activeSubs = subData.filter(sub => sub.attributes.status === 'active')
+    const canceledSubs = subData.filter(sub => sub.attributes.status === 'canceled')
+    let sortedSubs
+    if (sort === 'high'){
+      sortedSubs = activeSubs.sort((a, b) => b.attributes.price - a.attributes.price);
+    } else {
+      sortedSubs = activeSubs.sort((a, b) => a.attributes.price - b.attributes.price);
+    }
+    const mergedSubs = [...sortedSubs, ...canceledSubs]
+    setSubs(mergedSubs)
+  }
+
+  const switchSorting = (e) => {
+    const sortValue = e.target.value;
+    sortSubs(subs, sortValue);
+  }
   return (
 <main className='App'>
 <Routes>
         <Route path='/' element={<>
               <h1>Tea Time</h1>
-              <SubscriptionPage subs={subs} getDetails={getDetails} />
+              <SubscriptionPage subs={subs} getDetails={getDetails} switchSorting={switchSorting} />
             </>
           }/>
         <Route path='/subscription/:id' element={<>

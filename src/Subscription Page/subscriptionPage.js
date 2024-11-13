@@ -1,7 +1,7 @@
 import SubscriptionCard from '../Subscription Card/subscriptionCard';
 import './subscriptionPage.css';
 
-function SubscriptionPage ({ subs, getDetails }) {
+function SubscriptionPage ({ subs, getDetails, switchSorting }) {
     const subscriptionCards = subs.map(sub => {
         return (
             <SubscriptionCard
@@ -19,6 +19,10 @@ function SubscriptionPage ({ subs, getDetails }) {
     
     return (
         <div className='subs-page'>
+            <select name="sortSubs" id="sortSubs" onChange={switchSorting}>
+                    <option value="high" >High-to-Low Price</option>
+                    <option value="low" >Low-to-High Price</option>
+                </select>
             {subscriptionCards}
         </div>
     )

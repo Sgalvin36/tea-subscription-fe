@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import CustomerCard from '../Customer Card/customerCard'
+import TeaCard from '../Tea Card/teaCard'
 import './subscriptionDetails.css';
 
 function SubscriptionDetails () {
@@ -22,6 +23,19 @@ function SubscriptionDetails () {
         ));
     };
 
+    const renderTeaCards = (teas) => {
+        return teas.map(tea => (
+            <TeaCard
+                key={tea.id}
+                id={tea.id}
+                title={tea.title}
+                brewTime={tea.brew_time}
+                description={tea.description}
+                temperature={tea.temperature}
+            />
+        ))
+    }
+
     return (
         <section>
             <h2>{subDetails.attributes.title}</h2>
@@ -31,6 +45,9 @@ function SubscriptionDetails () {
             <section className='customers'>
                 {subDetails.attributes.active_customers && renderCustomerCards(subDetails.attributes.active_customers, 'active')}
                 {subDetails.attributes.inactive_customers && renderCustomerCards(subDetails.attributes.inactive_customers, 'inactive')}
+            </section>
+            <section className="teas">
+                {subDetails.attributes.teas && renderTeaCards(subDetails.attributes.teas)}
             </section>
         </section>
     )
