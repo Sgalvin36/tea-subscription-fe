@@ -1,7 +1,7 @@
 import SubscriptionCard from '../Subscription Card/subscriptionCard';
 import './subscriptionPage.css';
 
-function SubscriptionPage ({ subs }) {
+function SubscriptionPage ({ subs, getDetails }) {
     const subscriptionCards = subs.map(sub => {
         return (
             <SubscriptionCard
@@ -12,6 +12,7 @@ function SubscriptionPage ({ subs }) {
                 price={sub.attributes.price}
                 frequency={sub.attributes.frequency}
                 status={sub.attributes.status}
+                getDetails={getDetails}
             />
         )
     })
