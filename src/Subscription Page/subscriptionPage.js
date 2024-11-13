@@ -5,6 +5,7 @@ function SubscriptionPage ({ subs }) {
     const subscriptionCards = subs.map(sub => {
         return (
             <SubscriptionCard
+                icon={sub.icon}
                 id={sub.id}
                 key={sub.id}
                 title={sub.attributes.title}
