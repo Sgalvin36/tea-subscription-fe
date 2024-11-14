@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# Tea Subscription FE
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to **Tea Subscription Manager** – an application designed to support those managing multiple subscriptions and wanting to see their users quickly at a glance.  
 
-## Available Scripts
+## 📑 Table of Contents
+1. [About Tea Subscription Manager](#about-tea-subscription-manager)
+2. [Features That Matter 💛](#features-that-matter)
+3. [How to Use Tea Time](#how-to-use-tea-time)
+4. [Project Structure 🔍](#project-structure)
+5. [Authors 👥](#contributors)
 
-In the project directory, you can run:
 
-### `npm start`
+## About Tea Subscription Manager
+### Mission
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Designed with simplicity in mind, the subscriptions page reveals all the current and historic subscriptions that the manager may have. They are able to sort them by price as well as clear indicators for which subscriptions are currently not active. Easily reactive an old subscription with a simple button click. Each subscription maintains the history of customers that have signed up for it or are still subscribed.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Who Is This For?
 
-### `npm test`
+This app is designed for:
+- **Managers of Tea Subscriptions**: See all your subscriptions at a glance.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features That Matter 💛
 
-### `npm run build`
+- **Flexible Sorting Options**: Sort subscriptions by a price, high-to-low or low-to-high
+- **Canceling Subscriptions**: Cancel an entire subscriptions with a simple click to remove it for all customers
+- **Renew Subscriptions**: Need to bring back a best selling subscription? No worries, its still there and ready to be activated with a click of a button
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started 🛠
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/username/tea-subscription-fe.git
+    ```
+2. Install frontend and backend dependencies:
+    ```bash
+    # Frontend
+    npm install
+    # Backend
+    bundle install
+    ```
+3. Start the app:
+    ```bash
+    # Start Rails API server
+    rails server
+    # Start frontend
+    npm start
+    ```
+    
+## How to Use Tea Time
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Launch on Mobile**: Access [app URL or localhost link if testing locally] on a mobile device for the best experience.
+2. **Filter Recipes or Set Your Store Location**: Start by filtering recipes based on your preferences or by setting your nearest King Soopers location for accurate pricing.
+3. **View a Recipe**: Click on a recipe to access the full recipe page, where you’ll find detailed cooking instructions and a list of ingredients.
+   - **Store-Specific Pricing**: If you've already set your location, the recipe page will display real-time, store-specific prices for each ingredient.
+   - **Set Location Link**: If a location hasn't been set yet, you’ll see a link directing you to the location page. Once you select a store, you’ll be navigated back to the recipe page with updated pricing specific to that store.
 
-### `npm run eject`
+## Project Structure 🔍
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **`src`**: Contains all core application code.
+  - **`components`**: Reusable UI components, such as recipe cards, store selection interfaces, and other interactive elements.
+  - **`router`**: Defines all route handlers for navigating between pages in the app.
+- **`assets`**: Stores local images used within the app.
+- **`public`**: Contains public images and other static files accessible by the app.
+- **`cypress`**: Contains all end-to-end tests and testing configurations.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Authors 👥
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Meet the team behind Fresh Start Recipes:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- [Shane Galvin](https://github.com/Sgalvin36)  
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
